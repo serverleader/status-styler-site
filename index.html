@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status Styler ... type in 55 Unicode styles</title>
+<meta name="description" content="Status Styler turns anything you type into 55 copy-paste Unicode text styles that work in iMessage, WhatsApp, Instagram, X ... everywhere.">
+<style>
+:root{
+  --paper:#fafafc; --ink:#1c1b22; --muted:#6e6a7d;
+  --violet:#6c3ef5; --violet-deep:#4f24c8; --mist:#eeebfa;
+  --bubble-in:#e9e8ee; --line:#e3e0ef; --card:#ffffff;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#141220; --ink:#f0eefa; --muted:#a09bb8;
+    --violet:#9d7bff; --violet-deep:#7c5cff; --mist:#221e38;
+    --bubble-in:#2a2740; --line:#2e2a4a; --card:#1c1930;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--violet)}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none}
+.brand-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:19px;
+  background:linear-gradient(150deg,#5430e0,#a542f5)}
+.btn{display:inline-block;background:var(--violet);color:#fff;text-decoration:none;font-weight:600;
+  padding:10px 20px;border-radius:999px;transition:transform .15s ease,background .15s ease}
+.btn:hover{background:var(--violet-deep);transform:translateY(-1px)}
+.btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+/* hero */
+header{padding:56px 0 40px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+h1{font-size:clamp(34px,5.5vw,54px);line-height:1.12;letter-spacing:-.02em;font-weight:800}
+h1 .cycle{color:var(--violet);white-space:nowrap}
+.lede{margin-top:18px;font-size:19px;color:var(--muted);max-width:34ch}
+.hero-cta{margin-top:28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.applink{font-size:14px;color:var(--muted);text-decoration:none}
+.applink:hover{color:var(--violet)}
+/* chat */
+.chat{display:flex;flex-direction:column;gap:10px;padding:26px 20px;background:var(--mist);border-radius:24px}
+.msg{max-width:85%;padding:10px 16px;border-radius:20px;font-size:16.5px;opacity:0;transform:translateY(8px) scale(.96);
+  animation:pop .45s cubic-bezier(.2,.9,.3,1.2) forwards}
+.msg.in{background:var(--bubble-in);align-self:flex-start;border-bottom-left-radius:6px}
+.msg.out{background:var(--violet);color:#fff;align-self:flex-end;border-bottom-right-radius:6px}
+.msg:nth-child(1){animation-delay:.2s}.msg:nth-child(2){animation-delay:.9s}
+.msg:nth-child(3){animation-delay:1.6s}.msg:nth-child(4){animation-delay:2.3s}
+.msg:nth-child(5){animation-delay:3.0s}
+@keyframes pop{to{opacity:1;transform:none}}
+/* demo */
+.demo{margin-top:64px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px}
+.demo h2,.features h2{font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
+.demo p{color:var(--muted);margin-bottom:20px}
+.demo input{width:100%;font-size:20px;padding:14px 18px;border-radius:14px;border:2px solid var(--line);
+  background:var(--paper);color:var(--ink);margin-bottom:22px}
+.demo input:focus{outline:none;border-color:var(--violet)}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.chip{border:1px solid var(--line);background:var(--paper);border-radius:14px;padding:12px 14px;text-align:left;
+  cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s ease,transform .15s ease;position:relative}
+.chip:hover{border-color:var(--violet);transform:translateY(-1px)}
+.chip small{display:block;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.chip .out{font-size:18px;word-break:break-all}
+.chip.copied::after{content:"Copied";position:absolute;top:8px;right:10px;font-size:11px;font-weight:700;color:var(--violet)}
+.chip.more{display:grid;place-items:center;color:var(--violet);font-weight:600;text-decoration:none;font-size:15px}
+/* features */
+.features{margin-top:64px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card .glyph{font-size:26px;margin-bottom:10px}
+.card h3{font-size:16.5px;margin-bottom:6px}
+.card p{font-size:14.5px;color:var(--muted)}
+/* footer */
+.finale{margin:80px 0 40px;text-align:center}
+.finale .big{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:20px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;display:flex;justify-content:space-between;gap:16px;
+  color:var(--muted);font-size:14px;flex-wrap:wrap}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--violet)}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;gap:32px}
+  .grid3{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  .msg{animation:none;opacity:1;transform:none}
+  .btn:hover,.chip:hover{transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="./"><span class="brand-icon">Ⓢ</span>Status Styler</a>
+    <a class="btn" href="https://apps.apple.com/us/app/status-styler/id481000392">Download</a>
+  </nav>
+
+  <header>
+    <div class="hero">
+      <div>
+        <h1>Say it with<br><span class="cycle" id="cycle">𝓼𝓽𝔂𝓵𝓮</span></h1>
+        <p class="lede">Status Styler turns anything you type into 55 copy-paste Unicode styles that work in every app on your iPhone and iPad.</p>
+        <div class="hero-cta">
+          <a class="btn" href="https://apps.apple.com/us/app/status-styler/id481000392">Get it on the App Store</a>
+          <a class="applink" href="#try">or try it right here ↓</a>
+        </div>
+      </div>
+      <div class="chat" aria-label="Example conversation showing styled text">
+        <div class="msg out">did you see my new bio 😏</div>
+        <div class="msg in">wait, how did you make it look like 𝓽𝓱𝓲𝓼</div>
+        <div class="msg out">𝚂𝚝𝚊𝚝𝚞𝚜 𝚂𝚝𝚢𝚕𝚎𝚛, obviously</div>
+        <div class="msg in">Ⓘ ⓝⓔⓔⓓ ⓘⓣ</div>
+        <div class="msg out">uʍop ǝpᴉsdn ǝdʎʇ uǝʌǝ uɐɔ ʇᴉ</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="demo" id="try">
+    <h2>Try it now</h2>
+    <p>Type below, then tap any style to copy it ... exactly how the app works.</p>
+    <input id="input" type="text" value="Your name here" maxlength="80" aria-label="Text to style">
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="features">
+    <h2>Made for people with something to say</h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="glyph">⌨️</div>
+        <h3>A keyboard that speaks 55 styles</h3>
+        <p>Switch to the Status Styler keyboard and type styled text live in iMessage, WhatsApp, Instagram, X ... no copy-paste needed.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">🔒</div>
+        <h3>Private by design</h3>
+        <p>No accounts, no ads, no analytics, no network access. The keyboard never asks for Full Access. Everything happens on your device.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">✨</div>
+        <h3>One unlock, yours forever</h3>
+        <p>Five styles are free. One small one-time purchase unlocks all 55, plus every style we add in the future. No subscription, ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale">
+    <div class="big">𝒀𝒐𝒖𝒓 𝒘𝒐𝒓𝒅𝒔, 𝖇𝖚𝖙 ⓑⓔⓣⓣⓔⓡ.</div>
+    <a class="btn" href="https://apps.apple.com/us/app/status-styler/id481000392">Download Status Styler</a>
+  </section>
+
+  <footer>
+    <span>© 2026 Carlos Savcic</span>
+    <span><a href="privacy/">Privacy Policy</a> · <a href="mailto:serverleader@gmail.com">Support</a></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var A=65,a=97,zero=48;
+  function alpha(up,lo,dz,ex){return function(ch){
+    if(ex&&ex[ch])return ex[ch];
+    var c=ch.codePointAt(0);
+    if(ch.length===1||c>0xFFFF){
+      if(c>=A&&c<=90)return String.fromCodePoint(up+c-A);
+      if(c>=a&&c<=122)return String.fromCodePoint((lo||up)+c-a);
+      if(dz&&c>=zero&&c<=57)return String.fromCodePoint(dz+c-zero);
+    }
+    return ch;
+  };}
+  function mapper(m){return function(ch){return m[ch]||m[ch.toLowerCase()]||ch;};}
+  var smallCaps={a:"ᴀ",b:"ʙ",c:"ᴄ",d:"ᴅ",e:"ᴇ",f:"ꜰ",g:"ɢ",h:"ʜ",i:"ɪ",j:"ᴊ",k:"ᴋ",l:"ʟ",m:"ᴍ",n:"ɴ",o:"ᴏ",p:"ᴘ",q:"ǫ",r:"ʀ",s:"ꜱ",t:"ᴛ",u:"ᴜ",v:"ᴠ",w:"ᴡ",x:"x",y:"ʏ",z:"ᴢ"};
+  var flip={a:"ɐ",b:"q",c:"ɔ",d:"p",e:"ǝ",f:"ɟ",g:"ƃ",h:"ɥ",i:"ᴉ",j:"ɾ",k:"ʞ",l:"ʃ",m:"ɯ",n:"u",o:"o",p:"d",q:"b",r:"ɹ",s:"s",t:"ʇ",u:"n",v:"ʌ",w:"ʍ",x:"x",y:"ʎ",z:"z","?":"¿","!":"¡",".":"˙"};
+  var sup={a:"ᵃ",b:"ᵇ",c:"ᶜ",d:"ᵈ",e:"ᵉ",f:"ᶠ",g:"ᵍ",h:"ʰ",i:"ⁱ",j:"ʲ",k:"ᵏ",l:"ˡ",m:"ᵐ",n:"ⁿ",o:"ᵒ",p:"ᵖ",q:"ᑫ",r:"ʳ",s:"ˢ",t:"ᵗ",u:"ᵘ",v:"ᵛ",w:"ʷ",x:"ˣ",y:"ʸ",z:"ᶻ","0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹"};
+  var cash={a:"₳",b:"฿",c:"₵",d:"Đ",e:"Ɇ",f:"₣",g:"₲",h:"Ⱨ",i:"Ɨ",j:"J",k:"₭",l:"Ⱡ",m:"₥",n:"₦",o:"Ø",p:"₱",q:"Q",r:"Ɽ",s:"₴",t:"₮",u:"Ʉ",v:"V",w:"₩",x:"Ӿ",y:"Ɏ",z:"Ⱬ"};
+  var leet={a:"4",b:"8",e:"3",g:"9",i:"1",l:"1",o:"0",s:"5",t:"7",z:"2"};
+  var STYLES=[
+    ["Bold",alpha(0x1D5D4,0x1D5EE,0x1D7EC)],
+    ["Italic",alpha(0x1D608,0x1D622,null)],
+    ["Bold Script",alpha(0x1D4D0,0x1D4EA,null)],
+    ["Fraktur",alpha(0x1D504,0x1D51E,null,{C:"ℭ",H:"ℌ",I:"ℑ",R:"ℜ",Z:"ℨ"})],
+    ["Double-Struck",alpha(0x1D538,0x1D552,0x1D7D8,{C:"ℂ",H:"ℍ",N:"ℕ",P:"ℙ",Q:"ℚ",R:"ℝ",Z:"ℤ"})],
+    ["Monospace",alpha(0x1D670,0x1D68A,0x1D7F6)],
+    ["Bubble",alpha(0x24B6,0x24D0,null,{"0":"⓪","1":"①","2":"②","3":"③","4":"④","5":"⑤","6":"⑥","7":"⑦","8":"⑧","9":"⑨"})],
+    ["Filled Bubble",alpha(0x1F150,null,null,{"0":"⓿","1":"❶","2":"❷","3":"❸","4":"❹","5":"❺","6":"❻","7":"❼","8":"❽","9":"❾"})],
+    ["Fullwidth",alpha(0xFF21,0xFF41,0xFF10)],
+    ["Small Caps",mapper(smallCaps)],
+    ["Squared",alpha(0x1F130,null,null)],
+    ["Superscript",mapper(sup)],
+    ["Leetspeak",mapper(leet)],
+    ["Currency",mapper(cash)],
+    ["Upside Down",mapper(flip),true],
+    ["Strikethrough",function(ch){return /\s/.test(ch)?ch:ch+"̶";}]
+  ];
+  function style(text,fn,rev){
+    var out=Array.from(text).map(fn);
+    if(rev)out.reverse();
+    return out.join("");
+  }
+  var input=document.getElementById("input"),chips=document.getElementById("chips");
+  function render(){
+    var text=input.value||"Your name here";
+    chips.innerHTML="";
+    STYLES.forEach(function(s){
+      var b=document.createElement("button");
+      b.className="chip";
+      b.innerHTML="<small></small><span class='out'></span>";
+      b.querySelector("small").textContent=s[0];
+      b.querySelector(".out").textContent=style(text,s[1],s[2]);
+      b.addEventListener("click",function(){
+        navigator.clipboard.writeText(b.querySelector(".out").textContent).then(function(){
+          b.classList.add("copied");
+          setTimeout(function(){b.classList.remove("copied");},1200);
+        });
+      });
+      chips.appendChild(b);
+    });
+    var more=document.createElement("a");
+    more.className="chip more";
+    more.href="https://apps.apple.com/us/app/status-styler/id481000392";
+    more.textContent="+ 39 more styles in the app →";
+    chips.appendChild(more);
+  }
+  input.addEventListener("input",render);
+  render();
+  var words=["𝓼𝓽𝔂𝓵𝓮","𝖘𝖙𝖞𝖑𝖊","ⓢⓣⓨⓛⓔ","𝕤𝕥𝕪𝕝𝕖","ꜱᴛʏʟᴇ","𝚜𝚝𝚢𝚕𝚎","ｓｔｙｌｅ"],wi=0;
+  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    setInterval(function(){
+      wi=(wi+1)%words.length;
+      document.getElementById("cycle").textContent=words[wi];
+    },1400);
+  }
+})();
+</script>
+</body>
+</html>
