@@ -41,4 +41,4 @@ and more than triple the styles of the original.
 - [App Store](https://apps.apple.com/us/app/status-styler/id481000392)
 - [Website](https://serverleader.github.io/status-styler-site/)
 - [Privacy Policy](https://serverleader.github.io/status-styler-site/privacy/)
-- Support: serverleader@gmail.com
+- Support: support@shadowterm.app
