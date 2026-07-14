@@ -3,22 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy ... Status Styler</title>
+<title>Privacy Policy … Status Styler</title>
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/app-icon-180.png">
 <style>
-:root{--paper:#fafafc;--ink:#1c1b22;--muted:#6e6a7d;--violet:#6c3ef5;--line:#e3e0ef}
+:root{
+  --ink:#1a1a1a; --muted:#4a5560; --paper:#fffef8; --line:rgba(0,0,0,.08);
+  --note:#5eb0f0; --note-deep:#2f8ad6;
+  --rainbow: linear-gradient(90deg,
+    #7ed321 0%, #c6e019 14%, #f5d013 28%, #f5a623 42%,
+    #f5c518 56%, #b8e01a 70%, #7ed321 84%, #5ccf2a 100%);
+}
 @media (prefers-color-scheme: dark){
-  :root{--paper:#141220;--ink:#f0eefa;--muted:#a09bb8;--violet:#9d7bff;--line:#2e2a4a}
+  :root{
+    --ink:#f4f6f8; --muted:#b0b8c0; --paper:#12151a; --line:rgba(255,255,255,.1);
+    --note:#6bb8f2; --note-deep:#3d96db;
+  }
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif}
-a{color:var(--violet)}
+body{
+  color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  background:
+    linear-gradient(180deg, rgba(255,254,248,.94), rgba(255,254,248,.98)),
+    var(--rainbow);
+  background-attachment:fixed;
+}
+@media (prefers-color-scheme: dark){
+  body{
+    background:
+      linear-gradient(180deg, rgba(18,21,26,.95), rgba(18,21,26,.98)),
+      var(--rainbow);
+    background-attachment:fixed;
+  }
+}
+a{color:var(--note-deep)}
 .wrap{max-width:680px;margin:0 auto;padding:0 24px}
-nav{display:flex;align-items:center;gap:10px;padding:20px 0;border-bottom:1px solid var(--line)}
-nav a{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--ink);text-decoration:none}
-.brand-icon{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:19px;
-  background:linear-gradient(150deg,#5430e0,#a542f5)}
-main{padding:48px 0 64px}
+nav{
+  display:flex;align-items:center;gap:12px;padding:20px 0;
+  border-bottom:1px solid var(--line);
+}
+nav a{
+  display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;
+  color:var(--ink);text-decoration:none;letter-spacing:-.01em;
+}
+nav img{width:40px;height:40px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+main{
+  margin:32px 0 64px; padding:36px 28px;
+  background:var(--paper); border:1px solid var(--line); border-radius:20px;
+  box-shadow:0 12px 36px rgba(0,0,0,.06);
+}
 h1{font-size:32px;letter-spacing:-.02em;margin-bottom:6px}
 .date{color:var(--muted);font-size:14px;margin-bottom:28px}
 p,li{font-size:16.5px}
@@ -28,7 +62,12 @@ ul{margin:18px 0 18px 22px;display:grid;gap:10px}
 </head>
 <body>
 <div class="wrap">
-  <nav><a href="../"><span class="brand-icon">Ⓢ</span>Status Styler</a></nav>
+  <nav>
+    <a href="../">
+      <img src="../assets/app-icon.png" width="40" height="40" alt="Status Styler icon">
+      Status Styler
+    </a>
+  </nav>
   <main>
     <h1>Privacy Policy</h1>
     <p class="date">Effective date: 2026-07-13</p>
