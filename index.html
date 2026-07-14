@@ -63,12 +63,21 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
 .brand img{width:40px;height:40px;border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 .btn{
-  display:inline-block;background:var(--note-deep);color:#fff;text-decoration:none;font-weight:700;
+  display:inline-block;
+  background:#1f7fd0;
+  color:#ffffff !important;
+  text-decoration:none;font-weight:700;
   padding:11px 22px;border-radius:999px;
-  box-shadow:0 6px 18px rgba(47,138,214,.35);
+  border:none;
+  box-shadow:0 6px 18px rgba(31,127,208,.4);
   transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
 }
-.btn:hover{background:#2478c4;transform:translateY(-1px);box-shadow:0 8px 22px rgba(47,138,214,.45)}
+.btn:hover,.btn:visited,.btn:active{
+  background:#1866ab;
+  color:#ffffff !important;
+  transform:translateY(-1px);
+  box-shadow:0 8px 22px rgba(31,127,208,.5);
+}
 .btn:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--note);outline-offset:2px}
 
 /* hero */
@@ -191,8 +200,13 @@ h1 .cycle{color:var(--note-deep);white-space:nowrap}
 }
 .sticky-inner .big{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.02em;margin-bottom:10px}
 .sticky-inner p{opacity:.85;margin-bottom:22px;font-size:16px}
-.sticky-inner .btn{background:var(--ink);color:#fff;box-shadow:none}
-.sticky-inner .btn:hover{background:#000}
+/* Keep CTA high-contrast in light and dark (never inherit pale --ink). */
+.sticky-inner .btn,.sticky-inner .btn:hover,.sticky-inner .btn:visited{
+  background:#0d1b2a;
+  color:#ffffff !important;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+.sticky-inner .btn:hover{background:#000000;transform:translateY(-1px)}
 
 /* footer */
 footer{
